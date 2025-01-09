@@ -12,6 +12,7 @@
 The codebase consists of several Python files that implement a heart disease classification system using both an MLP (Multi-Layer Perceptron) neural network and a decision tree. Here's a overview of what each file does:
 
 **mlp_shap.py:**
+
   Implements the neural network model (ImprovedHeartDiseaseClassifier)
   
   Handles data preprocessing
@@ -21,6 +22,7 @@ The codebase consists of several Python files that implement a heart disease cla
   Implements SHAP analysis functionality
   
 **tree.py:**
+
   Implements the decision tree algorithm
   
   Uses entropy for split decisions
@@ -28,6 +30,7 @@ The codebase consists of several Python files that implement a heart disease cla
   Includes sample counting and depth tracking
   
 **tree_evaluation.py:**
+
   Provides evaluation metrics for the decision tree
   
   Implements prediction functionality
@@ -35,6 +38,7 @@ The codebase consists of several Python files that implement a heart disease cla
   Creates confusion matrices and performance plots
   
 **main.py:**
+
   Coordinates the overall analysis
   
   Loads the trained model
@@ -46,6 +50,7 @@ The codebase consists of several Python files that implement a heart disease cla
   Compares predictions
   
 **model_analysis.py:**
+
   Compares SHAP vs tree feature importance
   
   Analyzes model consistency
