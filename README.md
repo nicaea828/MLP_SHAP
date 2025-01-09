@@ -1,6 +1,6 @@
 # MLP_SHAP
 ## 1. First, train the model
-'''python mlp_shap.py'''
+```python mlp_shap.py```
 
 ## 2. After the model is trained and saved, run the main analysis
 python main.py
