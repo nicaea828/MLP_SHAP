@@ -8,7 +8,7 @@
 ## 3. Finally, run the additional model analysis (optional)
 ```python model_analysis.py```
 - - -
-# overview
+# Overview
 The codebase consists of several Python files that implement a heart disease classification system using both an MLP (Multi-Layer Perceptron) neural network and a decision tree. Here's a overview of what each file does:
 
 **mlp_shap.py:**
