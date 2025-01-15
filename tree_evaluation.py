@@ -9,7 +9,7 @@ class TreeEvaluator:
         self.tree = tree
         
     def predict_single(self, sample):
-        """预测单个样本"""
+        # 预测单个样本
         current_node = self.tree
         
         while current_node.value is None:
@@ -25,11 +25,11 @@ class TreeEvaluator:
         return current_node.value
     
     def predict(self, X):
-        """预测多个样本"""
+        # 预测多个样本
         return np.array([self.predict_single(sample) for sample in X])
     
     def evaluate(self, X, y_true):
-        """评估模型性能"""
+        # 评估模型性能
         y_pred = self.predict(X)
         
         # 计算各种指标
@@ -50,7 +50,7 @@ class TreeEvaluator:
         }
     
     def plot_confusion_matrix(self, cm):
-        """绘制混淆矩阵"""
+        # 绘制混淆矩阵
         plt.figure(figsize=(8, 6))
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
         plt.title('Decision Tree Confusion Matrix')
@@ -59,7 +59,7 @@ class TreeEvaluator:
         plt.show()
 
 def evaluate_tree_performance(tree, X_train, y_train, X_test, y_test):
-    """评估决策树在训练集和测试集上的性能"""
+    # 评估决策树在训练集和测试集上的性能
     evaluator = TreeEvaluator(tree)
     
     # 评估训练集性能
