@@ -7,11 +7,11 @@ class TreeNode:
         self.value = value
         self.left = left
         self.right = right
-        self.samples = 0  # 添加样本数量统计
-        self.depth = 0    # 添加深度信息
+        self.samples = 0  
+        self.depth = 0    
 
 def calculate_entropy(y):
-    """使用信息熵替代基尼不纯度"""
+    # 使用信息熵替代基尼不纯度
     if len(y) == 0:
         return 0
     _, counts = np.unique(y, return_counts=True)
@@ -19,7 +19,7 @@ def calculate_entropy(y):
     return -np.sum(probabilities * np.log2(probabilities + 1e-10))
 
 def find_best_split(X, y, feature_index, min_samples_split=5):
-    """改进的分裂点选择"""
+    # 改进的分裂点选择
     if len(y) < min_samples_split:
         return None, float('inf')
         
