@@ -10,7 +10,7 @@ class TreeVisualizer:
         self.tree = None
         
     def visualize_tree(self, node, depth=0, prefix="Root"):
-        """可视化决策树结构"""
+        # 可视化决策树结构
         if node is None:
             return
             
@@ -28,7 +28,7 @@ class TreeVisualizer:
         self.visualize_tree(node.right, depth + 1, "Right")
     
     def explain_prediction(self, node, sample):
-        """解释单个样本的预测路径"""
+        # 解释单个样本的预测路径
         path = []
         current_node = node
         
