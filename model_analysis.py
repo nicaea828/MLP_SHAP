@@ -14,7 +14,7 @@ class ModelAnalyzer:
         self.feature_names = feature_names
         
     def analyze_tree_feature_usage(self, tree_node, feature_usage=None):
-        """统计决策树中每个特征被使用的次数"""
+        # 统计决策树中每个特征被使用的次数
         if feature_usage is None:
             feature_usage = defaultdict(int)
         
@@ -34,8 +34,7 @@ class ModelAnalyzer:
         return feature_usage
 
     def compare_shap_vs_tree(self, shap_values, tree):
-        """比较SHAP重要性和决策树特征使用频率"""
-        # 计算SHAP重要性，确保转换为普通Python数值
+        # 比较SHAP重要性和决策树特征使用频率
         shap_importance = np.mean(np.abs(shap_values), axis=0).flatten()
         if isinstance(shap_importance, np.ndarray):
             shap_importance = shap_importance.tolist()
@@ -52,7 +51,6 @@ class ModelAnalyzer:
                 'tree_usage': float(feature_usage.get(i, 0))
             })
         
-        # 转换为DataFrame并排序
         df = pd.DataFrame(comparison_data)
         df_sorted = df.sort_values('shap_importance', ascending=False)
         
@@ -78,7 +76,7 @@ class ModelAnalyzer:
         return df_sorted
 
     def analyze_model_consistency(self, mlp_model, tree_evaluator, X):
-        """分析神经网络和决策树的预测一致性"""
+        # 分析神经网络和决策树的预测一致性
         # 获取两个模型的预测
         mlp_pred = mlp_model(torch.tensor(X, dtype=torch.float32)).detach().numpy()
         mlp_pred = (mlp_pred > 0.5).astype(int)
@@ -119,7 +117,7 @@ class ModelAnalyzer:
         }
 
     def analyze_feature_patterns(self, mlp_model, tree_evaluator, X):
-        """分析特征值与模型预测差异的关系，并在一张图中显示所有特征"""
+        # 分析特征值与模型预测差异的关系，并在一张图中显示所有特征
         mlp_pred = mlp_model(torch.tensor(X, dtype=torch.float32)).detach().numpy()
         mlp_pred = (mlp_pred > 0.5).astype(int)
         tree_pred = tree_evaluator.predict(X)
