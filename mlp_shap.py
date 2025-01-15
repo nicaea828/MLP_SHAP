@@ -11,8 +11,6 @@ import seaborn as sns
 from sklearn.metrics import confusion_matrix, classification_report
 import shap
 
-
-# 检查是否可用GPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # 设置随机种子以确保可重复性
@@ -159,8 +157,8 @@ class ShapAnalyzer:
             # 分离特征名称和重要性
             features = [x[0] for x in features_and_importances]
             importances = [float(x[1]) for x in features_and_importances]
+
             
-            # 创建图形
             plt.figure(figsize=(12, 8))
             y_pos = np.arange(len(features))
             
@@ -169,18 +167,15 @@ class ShapAnalyzer:
             print(f"importances length: {len(importances)}")
             print(f"importances values: {importances}")
             
-            # 使用plt.bar而不是plt.barh，并确保数据是列表或一维数组
             plt.bar(y_pos, importances)
             plt.xticks(y_pos, features, rotation=45, ha='right')
             plt.xlabel('Features')
             plt.ylabel('Mean |SHAP value|')
             plt.title('Feature Importance Based on SHAP Values')
             
-            # 调整布局以确保标签可见
             plt.tight_layout()
             plt.show()
             
-            # 打印数值结果
             print("\nFeature Importance Rankings:")
             for feat, imp in zip(features, importances):
                 print(f"{feat}: {imp:.6f}")
@@ -189,8 +184,8 @@ class ShapAnalyzer:
             print(f"Error in feature importance plot: {str(e)}")
             import traceback
             print(traceback.format_exc())
+
             
-            # 进一步的调试信息
             print("\nDebug information:")
             print(f"Shape of shap_values: {shap_values.shape}")
             print(f"Type of importances: {type(importances)}")
